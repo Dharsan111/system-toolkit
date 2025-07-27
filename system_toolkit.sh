@@ -29,7 +29,7 @@ while true; do
 			;;
 		2)
 			echo "------CLEAN TEMP FILES------"
-			read -p "Enter Directory To Clean (default: /tnp): " dir
+			read -p "Enter Directory To Clean (default: /tmp): " dir
 			dir = ${dir:-/tmp}
 			echo "Cleaning Temp Files in $dir..."
 			find "$dir" -type f \( -name "*.log" -o -name "*.tmp" -o -name "*~" \) -ecec rm -v {} \;
