@@ -30,22 +30,25 @@ while true; do
 		2)
 			echo "------CLEAN TEMP FILES------"
 			read -p "Enter Directory To Clean (default: /tmp): " dir
-			dir = ${dir:-/tmp}
+			dir=${dir:-/tmp}
 			echo "Cleaning Temp Files in $dir..."
-			find "$dir" -type f \( -name "*.log" -o -name "*.tmp" -o -name "*~" \) -ecec rm -v {} \;
+			find "$dir" -type f -exec rm -v {} \;
 			echo "cleanup Complete."
 			;;
 		3)
 			echo "------BACKUP DIRECTORY------"
-			echo read -p "Enter Directory To Backup: "src
-			if [ ! -d "$src" ]; then
-			    echo "Directory Not Found."
-	    		    continue
-	 		fi
-    			dtest = "$HOME/backups"
-			mkdir -p "$dest"
- 			filename="backup_$(basename $scr)_$(date +%F_+%H-%M-%S).tar.gz"
-			echo "Bacup Created: $dtest/$filename"
+			read -p "Enter Directory To Backup: " src
+			if [ -d "$src" ]; then
+			    dtest="/root/backups"
+		    	    mkdir -p "$dtest"
+		            dir_name=$(basename "$src")
+			    timestamp=$(date +%F_+%H-%M-%S)	                             
+			    filename="backup_${dir_name}_${timestamp}.tar.gz"
+			    tar -czf "$dest/$filename" "$src"
+			    echo "Backup created at: $dest/$filename"
+			else
+			    echo "Direcory not found: $src"
+			fi
 			;;
 		4)
 			echo "------UPDATE AND UPGRADE------"
