@@ -9,8 +9,7 @@ This is a Bash Script that performs coomon system maintananence tasks like:
 
 Run the Script Using: 
 
-'''bash
-
+```bash
 chmod +x system_toolkit.sh
 bash system_toolkit.sh
 
