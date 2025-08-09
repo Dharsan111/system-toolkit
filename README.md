@@ -1,4 +1,5 @@
-#WSL System Maintanence Toolkit
+WSL System Maintanence Toolkit
+------------------------------
 
 This is a Bash Script that performs coomon system maintananence tasks like:
  - Viewing System Info
